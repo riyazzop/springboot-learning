@@ -9,6 +9,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @ToString
@@ -47,4 +48,11 @@ public class Patient {
     private LocalDateTime createdAt;
     @Enumerated(EnumType.STRING)
     private BloodGroupsType bloodGroup;
+
+    @OneToOne(cascade = {CascadeType.ALL}, orphanRemoval = true)
+    @JoinColumn //Owning Side
+    private Insurance insurance;
+
+    @OneToMany(mappedBy = "patient", cascade = {CascadeType.REMOVE}, orphanRemoval = true, fetch = FetchType.EAGER)
+    private List<Appointment> appointments;
 }

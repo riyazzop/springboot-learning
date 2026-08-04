@@ -17,7 +17,7 @@ public class PatientService {
         Patient p2 = patientRepository.findById(id).orElseThrow();
 
         System.out.println(p1 == p2);
-        p1.setName("Riyaz Basha");
+
         return p1;
 
     }

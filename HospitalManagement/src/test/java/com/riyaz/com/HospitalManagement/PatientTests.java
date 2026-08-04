@@ -26,7 +26,7 @@ public class PatientTests {
 
     @Test
     public void testPatientRepository(){
-        var patientList = patientRepository.findAll();
+        var patientList = patientRepository.findAllPatientsWIthAppointments();
         patientList.forEach(System.out::println);
     }
 
